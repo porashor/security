@@ -1,0 +1,24 @@
+import React, { useState } from 'react'
+import { ToastContainer} from 'react-toastify'
+
+const SignIn = ({Sing}) => {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+  return (
+    <div>
+      <div className='w-[60%] mx-auto py-10 bg-cyan-400 my-10 rounded-xl'>
+        <h1 className='text-3xl uppercase font-semibold text-center py-6'>Sign in </h1>
+        <form onSubmit={(e)=>Sing(e, email, password, name)} className='w-[80%] mx-auto flex flex-col gap-5 text-xl '>
+            <input type="text" className='py-1 rounded-md px-3 outline-none' placeholder='enter your name' value={name} onChange={(e)=>setName(e.target.value)}/>
+            <input type="email" className='py-1 rounded-md px-3 outline-none' placeholder='enter your email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="password" className='py-1 rounded-md px-3 outline-none' placeholder='enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+            <button type='submit' className='text-2xl uppercase text-center font-semibold bg-green-500 rounded-md py-1 px-3'>Submit</button>
+        </form>
+        <ToastContainer/>
+      </div>
+    </div>
+  )
+}
+
+export default SignIn
