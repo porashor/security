@@ -29,8 +29,6 @@ const Nav = ({client}) => {
             <a href={item.link} className='bg-red-400 px-3 py-2 rounded-lg'>{item.name}</a>
         </div>
       ))}
-      <button className='bg-red-400 px-3 py-2 rounded-lg' onClick={signout}>SingOut</button>
-      <div>{client ? client.currentUser?.displayName : "no-user"}</div>
       <ToastContainer/>
     </div>
   )

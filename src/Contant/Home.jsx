@@ -2,28 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { AppData, store } from '../Auth/Auth'
 import { collection, doc, getDoc } from 'firebase/firestore'
 import useAuthAll from '../CustomHook/useAuthAll'
-
+import {toast, ToastContainer} from "react-toastify"
+ 
 const Home = () => {
   const [Person, setPerson] = useState("")
   async function HomeData() {
     AppData.onAuthStateChanged(async(user)=>{
-      console.log(user)
       const docRef = doc(store, user?.displayName, user?.uid)
           const docSnap = await getDoc(docRef)
-          console.log(docSnap.data())
           if(docSnap){
-            console.log(docSnap.data())
-            console.log("called if")
             setPerson(docSnap.data())
+            toast.success("successfully user founded",{
+              position: "top-right"
+            })
           }else{
-            console.log("no user has logedin ")
+            toast.success("no user found",{
+              position: "bottom-right"
+            })
           }
     })
   }
   useEffect(()=>{
     HomeData()
   },[])
-  console.log(Person)
   const {signout} = useAuthAll()
   return (
     <div>
@@ -43,6 +44,7 @@ const Home = () => {
           <button className='text-xl py-2 bg-green-300 w-full rounded-md mt-2 uppercase' onClick={signout}>SignOut</button>
         </div>
         </div> : <p>loading...</p> }
+        <ToastContainer/>
     </div>
   )
 }

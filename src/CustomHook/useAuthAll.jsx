@@ -33,7 +33,6 @@ const useAuthAll = () => {
               window.location.href="/"
             },5000)
           }
-          console.log(user)
           //showing in toast 
           toast.success("reg success", {
             position : "top-center"
@@ -78,7 +77,6 @@ const useAuthAll = () => {
           await signOut(AppData)
           //redirecting to home 
           window.location.href="/login"
-          console.log("signout here")
           toast.success("signout success",{
             position: "bottom-left"
           })

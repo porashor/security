@@ -15,7 +15,6 @@ const App = () => {
       setQcdata(user)
     })
   },[])
-  console.log(qcdata)
   return (
     <div className='py-6 w-[80%] mx-auto'>
       <Router>
