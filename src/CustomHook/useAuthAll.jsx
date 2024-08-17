@@ -6,9 +6,8 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 
 
 
-
 const useAuthAll = () => {
-
+    
     //function for create a new user 
     async function SignInF(e, email, pass, name) {
         e.preventDefault()
@@ -16,8 +15,6 @@ const useAuthAll = () => {
           //creating user 
           await createUserWithEmailAndPassword(AppData, email, pass)
           const user = AppData.currentUser
-          //redirecting to home 
-          window.location.href="/"
           //updating profile 
           if(user){
             updateProfile(user, {
@@ -31,12 +28,17 @@ const useAuthAll = () => {
               name: name,
               email: email
             })
+            setTimeout(()=>{
+              //redirecting to home 
+              window.location.href="/"
+            },5000)
           }
           console.log(user)
           //showing in toast 
           toast.success("reg success", {
             position : "top-center"
           })
+        
         }catch(err){
           console.log(err)
           toast.success("reg failed", {

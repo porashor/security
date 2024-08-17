@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AppData, store } from '../Auth/Auth'
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc } from 'firebase/firestore'
 import useAuthAll from '../CustomHook/useAuthAll'
 
 const Home = () => {
